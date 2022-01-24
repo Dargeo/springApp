@@ -1,4 +1,4 @@
-package aav.prj.course_int.services;
+package aav.prj.course_int.services.interfaces;
 
 import aav.prj.course_int.domain.Course;
 import aav.prj.course_int.domain.Subject;

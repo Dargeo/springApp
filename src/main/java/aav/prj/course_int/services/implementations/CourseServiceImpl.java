@@ -1,23 +1,25 @@
-package aav.prj.course_int.services;
+package aav.prj.course_int.services.implementations;
 
 import aav.prj.course_int.domain.Course;
-import aav.prj.course_int.domain.Subject;
 import aav.prj.course_int.repositories.CourseRepository;
+import aav.prj.course_int.services.interfaces.CourseApiService;
+import aav.prj.course_int.services.interfaces.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * @author Alejandro Arango
  */
-public class CourseServiceImpl implements CourseService{
+public class CourseServiceImpl implements CourseService, CourseApiService {
 
 
     @Autowired
     private CourseRepository courseRepository;
+
+    private RestTemplate restTemplate;
 
 
     @Override
@@ -39,4 +41,8 @@ public class CourseServiceImpl implements CourseService{
     }
 
 
+    @Override
+    public Object getApi(String url) {
+        return restTemplate.getForObject(url,Object.class);
+    }
 }
